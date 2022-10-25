@@ -14,7 +14,7 @@ for i, line in enumerate(data_file):
     x4 = x3.split()
     textcollection.append(x4)
     D += 1
-    if i>1000:
+    if i>2000:
         break
 
 textdict = {}
@@ -22,8 +22,8 @@ textdict = {}
 for i in textcollection:
     for word in i:
         if word not in textdict:
-            textdict[word] = 0
-        textdict[word] += 1
+            textdict[word] = 1
+    textdict[word] += 1
 
 dfdict = {}
 
@@ -32,7 +32,7 @@ for key, value in textdict.items():
     idf = math.log(1/df)
     dfdict[key] = idf
 
-dfdict2 = sorted(dfdict.items(), key=lambda kv: kv[-1])
+dfdict2 = sorted(dfdict.items(), key=lambda kv: kv[1])
 dfdict2.reverse()
 
 print(dfdict2)
