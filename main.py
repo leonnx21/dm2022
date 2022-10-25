@@ -35,4 +35,24 @@ for key, value in textdict.items():
 dfdict2 = sorted(dfdict.items(), key=lambda kv: kv[1])
 dfdict2.reverse()
 
-print(dfdict2)
+fdict ={}
+text = textcollection[1]
+
+for word in text:
+    if word not in fdict:
+        fdict[word] = 1
+fdict[word] += 1
+
+tfdict = {}
+for key, value in fdict.items():
+    tf = value/len(text)
+    tfdict[key] = tf
+
+
+tf_dfdict ={}
+for k1, v1 in dfdict.items():
+    for k2, v2 in tfdict.items():
+        if k1 == k2:
+            tf_dfdict[k1] = v1*v2
+
+print(tf_dfdict)
