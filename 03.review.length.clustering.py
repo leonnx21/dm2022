@@ -12,7 +12,6 @@ for i, line in enumerate(data_file):
     if i>n:
         break
 
-
 def distancematrixcal(lengthdict):
     distancematrix ={}
     for k1, v1 in lengthdict.items():
@@ -20,12 +19,16 @@ def distancematrixcal(lengthdict):
         for k2, v2 in lengthdict.items():
             distance[k2] = abs(lengthdict[k1] - v2)
         distancematrix[k1] = distance
-
+    print(distancematrix)
+    print("======================================")
     #remove 0
     for k1, v1 in distancematrix.items():
         v1 = {key: val for key, val in v1.items() if val != 0}
         distancematrix[k1] = v1
+    print(distancematrix)
     return distancematrix
+
+distancematrixcal(lengthdict)
 
 #print(matrix)
 """
@@ -58,13 +61,14 @@ def mergingpoints(lengthdict, distancematrix, lastposition):
     lastposition = lastposition+1
     return lengthdict, lastposition
 
-print(lengthdict)
 
-lastposition = 10
+"""
+lastposition = n
 for i in range(n):
     matrix = distancematrixcal(lengthdict)
     lengthdict, lastposition = mergingpoints(lengthdict, distancematrixcal(lengthdict), lastposition)
     print(lengthdict)
+"""
 
 
 
