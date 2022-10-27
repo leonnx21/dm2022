@@ -49,20 +49,21 @@ def pointstomerge(distancematrix, distance):
             if v2 == mindistance:
                 return k1, k2
 
-def mergingpoints(lengthdict, distancematrix):
-    lastposition = len(lengthdict)
+def mergingpoints(lengthdict, distancematrix, lastposition):
     newvalue = 0
     for i in pointstomerge(distancematrix, mindistancecal(distancematrix)):
         newvalue = newvalue + lengthdict[i]
         lengthdict.pop(i)
-    lengthdict[lastposition] = newvalue/2
-    return lengthdict
+    lengthdict[lastposition+1] = newvalue/2
+    lastposition = lastposition+1
+    return lengthdict, lastposition
 
 print(lengthdict)
 
-for i in range(n-1):
+lastposition = 10
+for i in range(n):
     matrix = distancematrixcal(lengthdict)
-    lengthdict = mergingpoints(lengthdict, distancematrixcal(lengthdict))
+    lengthdict, lastposition = mergingpoints(lengthdict, distancematrixcal(lengthdict), lastposition)
     print(lengthdict)
 
 
